@@ -57,7 +57,7 @@ permalink: /
                         </div>
                     </div>
                      <div class="resources">
-                        <p class="sidebar">Resources included: 
+                        <p class="sidebar">Resources included: A
                             
                             {% assign first = true %}
                             {% assign all_res_output = '' %}
@@ -77,15 +77,13 @@ permalink: /
                         </p>    
                         <ul class="resource-list">
                             <h4>Resources: </h4>  
-                            <!-- {% for wanted_res in module.module.res %}
-                                {% for post in site.posts %}2-{{ post.resource.id }}
-                                    {% assign search-res = resource.id | remove: '/resources/' %}
-                                    {% if post.resource.id == wanted_res %}                                           
-                                        {{ post.output | append: 'hiiiier' }} 3
-                                        {{ post.resource.name }}
-                                   {% endif %}  
+                            {% for wanted_res in module.module.res %}  1-
+                               {% for post in site.posts %}    2({{post.resource.id}})
+                                    {% if post.resource.id == wanted_res %}
+                                        {{ post.output }}
+                                    {% endif %}
                                 {% endfor %}
-                            {% endfor  %} -->
+                            {% endfor  %}
 
                             Resource-Output:
                             {{ all_res_output }}
