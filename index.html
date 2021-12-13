@@ -61,36 +61,31 @@ permalink: /
                             
                             {% assign first = true %}
                             {% assign all_res_output = '' %}
-                            {% for actual_res in module.module.res %}
-                                {% for resource in site.resources %}
-                                    {% assign search-res = resource.id | remove: '/resources/' %}
-                                    {% if search-res == actual_res %}
+                            {% for wanted_res in module.module.res %}
+                               {% for post in site.posts %}    
+                                    {% if post.resource.id == wanted_res %}
                                         {% if first == false %}
                                             {{ '|' }}
                                         {% endif %}
                                         {% assign first = false %}
-                                        <a href="{{ resource.resource.url }}" target="_blank">{{ resource.resource.name }}</a>
-                                        {% assign all_res_output = all_res_output | append: resource.output %}
+                                        <a href="{{ post.resource.url }}" target="_blank">{{ post.resource.name }}</a>
+                                        {% assign all_res_output = all_res_output | append: post.output %}
                                     {% endif %}
                                 {% endfor %}
                             {% endfor  %}
                             
                         </p>    
                         <ul class="resource-list">
-                            <h4>Resources: </h4>   0-
-                            {% for actual_res in module.module.res %} 1-
-                                {% for resource in site.resources %}2-
+                            <h4>Resources: </h4>  
+                            <!-- {% for wanted_res in module.module.res %}
+                                {% for post in site.posts %}2-{{ post.resource.id }}
                                     {% assign search-res = resource.id | remove: '/resources/' %}
-                                    {% if search-res == actual_res %}
-                                        <!-- {{ resource.content | append: 'hiiiier' }} 3
-                                        {{ resource.output | append: 'hiiiier' }} 3 -->
-                                        {{ output | append: 'hiiiier' }} 3
-                                        {{ resource }}
-                                    {% endif %}
+                                    {% if post.resource.id == wanted_res %}                                           
+                                        {{ post.output | append: 'hiiiier' }} 3
+                                        {{ post.resource.name }}
+                                   {% endif %}  
                                 {% endfor %}
-                            {% endfor  %}
-
-                            {{ include _resources/mini.md }}
+                            {% endfor  %} -->
 
                             Resource-Output:
                             {{ all_res_output }}
